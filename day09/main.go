@@ -65,67 +65,17 @@ func ropeBridge(path string, numTails int) int {
 }
 
 func (tail *coord) follow(head coord) {
-	if abs(head.x-tail.x) <= 1 && abs(head.y-tail.y) <= 1 {
-		return
-	}
-
-	// Two spaces horizontally away
-	if abs(head.x-tail.x) == 2 {
-		// If there's no vertical spacing
-		if head.y == tail.y {
-			if head.x > tail.x {
-				tail.x++
-			} else {
-				tail.x--
-			}
-		} else {
-			if head.x > tail.x {
-				if head.y > tail.y {
-					tail.x++
-					tail.y++
-				} else {
-					tail.x++
-					tail.y--
-				}
-			} else {
-				if head.y > tail.y {
-					tail.x--
-					tail.y++
-				} else {
-					tail.x--
-					tail.y--
-				}
-			}
+	if abs(head.x-tail.x) == 2 || abs(head.y-tail.y) == 2 {
+		if head.x > tail.x {
+			tail.x++
+		} else if head.x < tail.x {
+			tail.x--
 		}
-	}
 
-	// Two spaces vertically away
-	if abs(head.y-tail.y) == 2 {
-		// If there's no horizontal spacing
-		if head.x == tail.x {
-			if head.y > tail.y {
-				tail.y++
-			} else {
-				tail.y--
-			}
-		} else {
-			if head.y > tail.y {
-				if head.x > tail.x {
-					tail.x++
-					tail.y++
-				} else {
-					tail.x--
-					tail.y++
-				}
-			} else {
-				if head.x > tail.x {
-					tail.x++
-					tail.y--
-				} else {
-					tail.x--
-					tail.y--
-				}
-			}
+		if head.y > tail.y {
+			tail.y++
+		} else if head.y < tail.y {
+			tail.y--
 		}
 	}
 }
