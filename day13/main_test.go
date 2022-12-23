@@ -41,8 +41,8 @@ func TestCompare(t *testing.T) {
 	}{
 		{
 			name:     "Both ints",
-			left:     5,
-			right:    7,
+			left:     []any{float64(5)},
+			right:    []any{float64(7)},
 			expected: -2,
 		},
 		{
